@@ -78,8 +78,6 @@ const keys = {
   }
 }
 
-let lastKey
-
 function animate() {
   window.requestAnimationFrame(animate);
   ctx.fillStyle = 'black';
@@ -87,17 +85,18 @@ function animate() {
   player.update()
   enemy.update()
 
-  player.velocity.x = 0 // reset player velocity
+  player.velocity.x = 0 // reset player velocity, otherwise it will keep moving
+  enemy.velocity.x = 0
 
   // player movements
-  if (keys.a.isDown && lastKey == 'a') {
+  if (keys.a.isDown && player.lastKey == 'a') {
     player.velocity.x = -1
-  } else if (keys.d.isDown && lastKey == 'd') {
+  } else if (keys.d.isDown && player.lastKey == 'd') {
     player.velocity.x = 1
   }
 
   // enemy movements
-  enemy.velocity.x = 0
+  
   if (keys.ArrowLeft.isDown && enemy.lastKey == 'ArrowLeft') {
     enemy.velocity.x = -1
   } else if (keys.ArrowRight.isDown && enemy.lastKey == 'ArrowRight') {
@@ -113,11 +112,11 @@ window.addEventListener('keydown', (event) => {
   switch (event.key) {
     case 'd':
       keys.d.isDown = true
-      lastKey = 'd'
+      player.lastKey = 'd'
       break;
     case 'a':
       keys.a.isDown = true
-      lastKey = 'a'
+      player.lastKey = 'a'
       break;
     case 'w':
       player.velocity.y = -10
@@ -126,7 +125,6 @@ window.addEventListener('keydown', (event) => {
 
   // enemy controls
   switch (event.key) {
-     // enemy controls
      case 'ArrowRight':
       keys.ArrowRight.isDown = true
       enemy.lastKey = 'ArrowRight'
