@@ -15,6 +15,7 @@ class Sprite {
      this.position = position;
      this.velocity = velocity;
      this.height = 150;
+     this.lastKey
    }
   
   draw() {
@@ -24,6 +25,7 @@ class Sprite {
 
   update() {
     this.draw()
+    this.position.x += this.velocity.x
     this.position.y += this.velocity.y
 
     if (this.position.y + this.height + this.velocity.y >= canvas.height) {
@@ -54,12 +56,109 @@ const enemy = new Sprite({
   }
 })
 
+const keys = {
+  a: {
+    isDown: false,
+  },
+
+  d: {
+    isDown: false,
+  },
+
+  w: {
+    isDown: false,
+  },
+
+  ArrowRight: {
+    isDown: false,
+  },
+
+  ArrowLeft: {
+    isDown: false
+  }
+}
+
+let lastKey
+
 function animate() {
   window.requestAnimationFrame(animate);
   ctx.fillStyle = 'black';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   player.update()
   enemy.update()
+
+  player.velocity.x = 0 // reset player velocity
+
+  // player movements
+  if (keys.a.isDown && lastKey == 'a') {
+    player.velocity.x = -1
+  } else if (keys.d.isDown && lastKey == 'd') {
+    player.velocity.x = 1
+  }
+
+  // enemy movements
+  enemy.velocity.x = 0
+  if (keys.ArrowLeft.isDown && enemy.lastKey == 'ArrowLeft') {
+    enemy.velocity.x = -1
+  } else if (keys.ArrowRight.isDown && enemy.lastKey == 'ArrowRight') {
+    enemy.velocity.x = 1
+  }
 }
 
 animate();
+
+// event listeners
+
+window.addEventListener('keydown', (event) => {
+  switch (event.key) {
+    case 'd':
+      keys.d.isDown = true
+      lastKey = 'd'
+      break;
+    case 'a':
+      keys.a.isDown = true
+      lastKey = 'a'
+      break;
+    case 'w':
+      player.velocity.y = -10
+      break;
+  }
+
+  // enemy controls
+  switch (event.key) {
+     // enemy controls
+     case 'ArrowRight':
+      keys.ArrowRight.isDown = true
+      enemy.lastKey = 'ArrowRight'
+      break;
+    case 'ArrowLeft':
+      keys.ArrowLeft.isDown = true
+      enemy.lastKey = 'ArrowLeft'
+      break;
+    case 'ArrowUp':
+      enemy.velocity.y = -10
+      break;
+  }
+
+})
+
+window.addEventListener('keyup', (event) => {
+  switch (event.key) {
+    case 'd':
+      keys.d.isDown = false
+      break;
+    case 'a':
+      keys.a.isDown = false
+      break;  
+  }
+
+  // enemy controls
+  switch (event.key) {
+    case 'ArrowRight':
+      keys.ArrowRight.isDown = false
+      break;
+    case 'ArrowLeft':
+      keys.ArrowLeft.isDown = false
+      break;
+  }
+})
