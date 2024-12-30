@@ -8,19 +8,28 @@ canvas.height = 576;
 // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillRect
 ctx.fillRect(0, 0, canvas.width, canvas.height); // fillRect(x, y, width, height) draws a rectangle whose starting point is at (x, y) and whose width and height
 
-const gravity = 0.2
+const gravity = 0.7
 
 class Sprite {
    constructor({ position, velocity }) {
-     this.position = position;
-     this.velocity = velocity;
-     this.height = 150;
+     this.position = position
+     this.velocity = velocity
+     this.height = 150
      this.lastKey
+     this.attackBox = {
+      position: this.position,
+      width: 100,
+      height: 50
+    }
    }
   
   draw() {
     ctx.fillStyle = 'red'
     ctx.fillRect(this.position.x, this.position.y, 50, this.height)
+
+    // draw attack box
+    ctx.fillStyle = 'green'
+    ctx.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height)
   }
 
   update() {
@@ -90,17 +99,17 @@ function animate() {
 
   // player movements
   if (keys.a.isDown && player.lastKey == 'a') {
-    player.velocity.x = -1
+    player.velocity.x = -5
   } else if (keys.d.isDown && player.lastKey == 'd') {
-    player.velocity.x = 1
+    player.velocity.x = 5
   }
 
   // enemy movements
   
   if (keys.ArrowLeft.isDown && enemy.lastKey == 'ArrowLeft') {
-    enemy.velocity.x = -1
+    enemy.velocity.x = -5
   } else if (keys.ArrowRight.isDown && enemy.lastKey == 'ArrowRight') {
-    enemy.velocity.x = 1
+    enemy.velocity.x = 5
   }
 }
 
@@ -119,7 +128,7 @@ window.addEventListener('keydown', (event) => {
       player.lastKey = 'a'
       break;
     case 'w':
-      player.velocity.y = -10
+      player.velocity.y = -20
       break;
   }
 
@@ -134,7 +143,7 @@ window.addEventListener('keydown', (event) => {
       enemy.lastKey = 'ArrowLeft'
       break;
     case 'ArrowUp':
-      enemy.velocity.y = -10
+      enemy.velocity.y = -20
       break;
   }
 
