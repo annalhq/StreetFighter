@@ -1,38 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Street Fighter II</title>
     <style>
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-        }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
 
-        body {
-            display: flex;
-        }
+      body {
+        display: flex;
+      }
 
-        body,
-        canvas {
-            background-color: black;
-        }
+      body,
+      canvas {
+        background-color: black;
+      }
 
-        canvas {
-            width: 100%;
-            object-fit: contain;
-            image-rendering: pixelated;
-            image-rendering: crisp-edges;
-        }
+      canvas {
+        width: 100%;
+        object-fit: contain;
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
+      }
     </style>
-    <script defer src="./index.js"></script>
-</head>
-<body>
+    <script type="module" src="./src/index.js"></script>
+  </head>
+  <body>
     <canvas></canvas>
-    <img src="sprites/ken.png" alt="Ken" style="display: none;">
-    <img src="sprites/Ryu-SF2-Stage.png" alt="background" style="display: none;">
-</body>
+    <img src="./images/ken.png" alt="Ken" style="display: none" />
+    <img
+      src="./images/Ryu-SF2-Stage.png"
+      alt="background"
+      style="display: none"
+    />
+  </body>
 </html>
