@@ -9,14 +9,23 @@
         body {
             margin: 0;
             padding: 0;
+            height: 100%;
         }
 
         body {
+            display: flex;
+        }
+
+        body,
+        canvas {
             background-color: black;
         }
 
         canvas {
-            background-color: yellow;
+            width: 100%;
+            object-fit: contain;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
         }
     </style>
     <script defer src="./index.js"></script>
