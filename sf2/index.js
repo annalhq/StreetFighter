@@ -19,7 +19,7 @@ window.onload = function () {
     context.stroke();
 
     // characters image
-    const ken = document.querySelector('img')
+    const [ken, background] = document.querySelectorAll('img')
 
     const position = {
         x: 0,
@@ -36,7 +36,8 @@ window.onload = function () {
             velocity = -velocity;
         }
 
-        context.clearRect(0, 0, GameViewport.WIDTH, GameViewport.HEIGHT)
+        // context.clearRect(0, 0, GameViewport.WIDTH, GameViewport.HEIGHT)
+        context.drawImage(background,0,0)
 
         context.strokeStyle = 'yellow';
         context.moveTo(0, 0);
