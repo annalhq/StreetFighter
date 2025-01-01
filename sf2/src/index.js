@@ -1,6 +1,6 @@
-import { Ken } from './ken.js';
-import { Ryu } from './ryu.js';
-import { Stage } from './stage.js';
+import { Ken } from './entities/fighters/Ken.js';
+import { Ryu } from './entities/fighters/Ryu.js';
+import { Stage } from './entities/Stage.js';
 
 const GameViewport = {
   WIDTH: 384,
@@ -14,14 +14,21 @@ window.onload = function () {
   canvasComp.width = GameViewport.WIDTH;
   canvasComp.height = GameViewport.HEIGHT;
 
-  const ken = new Ken(80, 100, 2); 
-  const ryu = new Ryu(80, 105, -2);
+  const ken = new Ken(80, 100, 150); 
+  const ryu = new Ryu(80, 105, -150);
   const stage = new Stage();
 
-  // fps logic
-  function frame() {
-    ken.update(context);
-    ryu.update(context);
+  // fps
+
+  let previousTime = 0;
+  let secondsPassed = 0;
+
+  function frame(time) {
+    secondsPassed = (time - previousTime) / 1000;
+    previousTime = time;
+
+    ken.update(secondsPassed, context);
+    ryu.update(secondsPassed, context);
 
     stage.draw(context);
     ken.draw(context);

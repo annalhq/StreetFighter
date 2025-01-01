@@ -1,4 +1,6 @@
-// // standard object literal
+// OOP samples
+
+// standard object literal
 
 // const objectEntity = {
 //     position: {x: 0, y: 0},
