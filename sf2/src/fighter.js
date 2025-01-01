@@ -9,10 +9,7 @@ export class Fighter {
   update(context) {
     this.position.x += this.velocity;
 
-    if (
-      this.position.x > context.canvas.width - this.image.width ||
-      this.position.x < 0
-    ) {
+    if (this.position.x > context.canvas.width - this.image.width || this.position.x < 0) {
       this.velocity = -this.velocity;
     }
   }
