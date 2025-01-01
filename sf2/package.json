@@ -1,11 +1,10 @@
 {
   "devDependencies": {
-    "prettier": "^3.4.2"
+    "prettier": "^3.4.2",
+    "standard-version": "^9.5.0"
   },
   "scripts": {
-    "format": "prettier --write ."
-  },
-  "dependencies": {
-    "standard-version": "^9.5.0"
+    "format": "prettier --write .",
+    "release": "standard-version"
   }
 }
