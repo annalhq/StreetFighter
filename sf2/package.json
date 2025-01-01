@@ -6,5 +6,9 @@
   "scripts": {
     "format": "prettier --write .",
     "release": "standard-version"
-  }
+  },
+  "name": "sf2",
+  "version": "1.1.0",
+  "main": "index.html",
+  "license": "MIT"
 }
