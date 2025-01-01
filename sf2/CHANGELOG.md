@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/annalhq/gameDev/compare/v1.1.0...v1.2.0) (2025-01-01)
+
+
+### Features
+
+* add ryu idle sprite ([0436a17](https://github.com/annalhq/gameDev/commit/0436a174698221c597e70a4fb0bed6d8cb415ec9))
+
 ## 1.1.0 (2025-01-01)
 
 
