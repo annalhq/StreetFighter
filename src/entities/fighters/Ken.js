@@ -7,13 +7,13 @@ export class Ken extends Fighter {
     this.image = document.querySelector("img[alt='ken']");
 
     this.frames = new Map([
-      // ['name', [x, y, width, height]],
-      ['forwards-1', [8, 872, 53, 83]],
-      ['forwards-2', [70, 867, 60, 88]],
-      ['forwards-3', [140, 866, 64, 90]],
-      ['forwards-4', [215, 865, 63, 89]],
-      ['forwards-5', [288, 866, 54, 89]],
-      ['forwards-6', [357, 867, 50, 89]],
+      // ['name', [x, y, width, height], [originX, originY]],
+      ['forwards-1', [[8, 872, 53, 83], [27, 81]]],
+      ['forwards-2', [[70, 867, 60, 88], [35, 86]]],
+      ['forwards-3', [[140, 866, 64, 90], [35, 87]]],
+      ['forwards-4', [[215, 865, 63, 89], [29,88]]],
+      ['forwards-5', [[288, 866, 54, 89], [25, 87]]],
+      ['forwards-6', [[357, 867, 50, 89], [25, 86]]],
     ]);
   }
 }
