@@ -4,6 +4,6 @@ export class Stage {
   }
 
   draw(context) {
-    context.drawImage(background, 0, 0);
+    context.drawImage(this.image, 0, 0);
   }
 }

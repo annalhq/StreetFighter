@@ -1,6 +1,6 @@
-import { Stage } from './stage.js';
 import { Ken } from './ken.js';
 import { Ryu } from './ryu.js';
+import { Stage } from './stage.js';
 
 const GameViewport = {
   WIDTH: 384,
@@ -14,14 +14,14 @@ window.onload = function () {
   canvasComp.width = GameViewport.WIDTH;
   canvasComp.height = GameViewport.HEIGHT;
 
-  const ken = new Ken(80, 100, 1); 
-  const ryu = new Ryu(80, 100, -1);
+  const ken = new Ken(80, 100, 2); 
+  const ryu = new Ryu(80, 105, -2);
   const stage = new Stage();
 
   // fps logic
   function frame() {
     ken.update(context);
-    ryu.updatw(context);
+    ryu.update(context);
 
     stage.draw(context);
     ken.draw(context);
