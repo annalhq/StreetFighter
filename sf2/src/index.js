@@ -1,5 +1,6 @@
 import { drawBackground } from './stage.js';
 import { updateKen, drawKen } from './ken.js';
+import { updateRyu, drawRyu } from './ryu.js';
 
 const GameViewport = {
   WIDTH: 384,
@@ -16,9 +17,11 @@ window.onload = function () {
   // fps logic
   function frame() {
     updateKen(context);
+    updateRyu(context);
 
     drawBackground(context);
     drawKen(context);
+    drawRyu(context);
 
     window.requestAnimationFrame(frame);
   }

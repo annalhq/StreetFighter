@@ -8,13 +8,13 @@ const position = {
 let velocity = 3;
 
 export function updateKen(context) {
-position.x += velocity;
+  position.x += velocity;
 
-if (position.x > context.canvas.width - ken.width || position.x < 0) {
-  velocity = -velocity;
-}
+  if (position.x > context.canvas.width - ken.width || position.x < 0) {
+    velocity = -velocity;
+  }
 }
 
 export function drawKen(context) {
-context.drawImage(ken, position.x, position.y);
+  context.drawImage(ken, position.x, position.y);
 }
