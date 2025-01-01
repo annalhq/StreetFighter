@@ -4,5 +4,8 @@
   },
   "scripts": {
     "format": "prettier --write ."
+  },
+  "dependencies": {
+    "standard-version": "^9.5.0"
   }
 }

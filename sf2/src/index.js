@@ -1,3 +1,6 @@
+import { drawBackground } from './stage.js';
+import { updateKen, drawKen } from './ken.js';
+
 const GameViewport = {
   WIDTH: 384,
   HEIGHT: 224,
@@ -12,7 +15,11 @@ window.onload = function () {
 
   // fps logic
   function frame() {
-    context.drawImage(background, 0, 0);
+    updateKen(context);
+
+    drawBackground(context);
+    drawKen(context);
+
     window.requestAnimationFrame(frame);
   }
 
