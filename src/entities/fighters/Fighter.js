@@ -1,18 +1,20 @@
 export class Fighter {
   constructor(name, x, y, velocity) {
     this.name = name;
-    this.image  = new Image();
+    this.image = new Image();
     this.frames = new Map();
-    this.position = {x, y};
+    this.position = { x, y };
     this.velocity = velocity;
     this.animationFrame = 1;
     this.animationTimer = 0;
+    this.state;
+    this.animatoins = {};
   }
 
   update(time, context) {
     const [[, , width]] = this.frames.get(`forwards-${this.animationFrame}`);
 
-    if (time.previous > this.animationTimer + 60 ) {
+    if (time.previous > this.animationTimer + 60) {
       this.animationTimer = time.previous;
 
       this.animationFrame++;
@@ -21,7 +23,10 @@ export class Fighter {
 
     this.position.x += this.velocity * time.secondsPassed;
 
-    if (this.position.x > context.canvas.width - width / 2 || this.position.x < width / 2) {
+    if (
+      this.position.x > context.canvas.width - width / 2 ||
+      this.position.x < width / 2
+    ) {
       this.velocity = -this.velocity;
     }
   }
@@ -39,17 +44,21 @@ export class Fighter {
   }
 
   draw(context) {
-    const [
-      [x, y, width, height],
-      [originX, originY]
-    ] = this.frames.get(`forwards-${this.animationFrame}`);
-    
+    const [[x, y, width, height], [originX, originY]] = this.frames.get(
+      `forwards-${this.animationFrame}`
+    );
+
     context.drawImage(
       this.image,
-      x, y,
-      width, height,
-      this.position.x - originX, this.position.y - originY,
-      width, height);
+      x,
+      y,
+      width,
+      height,
+      this.position.x - originX,
+      this.position.y - originY,
+      width,
+      height
+    );
     this.drawDebug(context);
   }
 }

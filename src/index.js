@@ -26,17 +26,17 @@ window.addEventListener('load', function () {
   // fps
 
   let frameTime = {
-  previous: 0,
-  secondsPassed: 0,
-  }
+    previous: 0,
+    secondsPassed: 0,
+  };
 
   function frame(time) {
     window.requestAnimationFrame(frame);
 
     frameTime = {
-    secondsPassed: (time - frameTime.previous) / 1000,
-    previous: time,
-    }
+      secondsPassed: (time - frameTime.previous) / 1000,
+      previous: time,
+    };
 
     for (const entity of entities) {
       entity.update(frameTime, context);
@@ -45,7 +45,6 @@ window.addEventListener('load', function () {
     for (const entity of entities) {
       entity.draw(context);
     }
-
   }
 
   window.requestAnimationFrame(frame);
