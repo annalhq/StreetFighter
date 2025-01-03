@@ -20,10 +20,10 @@ export class Fighter {
       this.animationTimer = time.previous;
 
       this.animationFrame++;
-      //   if (this.animationFrame > 6) this.animationFrame = 1;
-      if (this.animationFrame >= this.animations[this.state].length) {
-        this.animationFrame = 0;
-      }
+        if (this.animationFrame > 5) this.animationFrame = 1;
+      // if (this.animationFrame >= this.animations[this.state].length) {
+      //   this.animationFrame = 0;
+      // }
     }
 
     this.position.x += this.velocity * time.secondsPassed;
