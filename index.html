@@ -14,6 +14,9 @@
 
       body {
         display: flex;
+        flex-direction: column;
+        --form-height: 6rem;
+        --form-content-size: 2rem;
       }
 
       body,
@@ -27,11 +30,57 @@
         image-rendering: pixelated;
         image-rendering: crisp-edges;
       }
+
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: var(--form-content-size);
+        height: var(--form-height-size);
+      }
+
+      form * {
+        font-size: var(--form-content-size)
+      }
+
+      input[type="checkbox"] {
+        width: var(--form-content-size);
+        height: var(--form-content-size);
+      }
+
+      main { 
+        display: flex;
+        height: calc(100% - var(--form-height));
+      }
+
+      label {
+        color: white
+      }
     </style>
     <script type="module" src="./src/index.js"></script>
   </head>
   <body>
-    <canvas width="384" height="224"></canvas>
+    <!-- form to choose states for ken and ryu -->
+    <form>
+      <div>
+        <input id="ken" type="checkbox" name="fighter" value="Ken" />
+        <label for="ken">Ken</label>
+      </div>
+      <div>
+        <input id="ryu" type="checkbox" name="fighter" value="Ryu" />
+        <label for="ryu">Ryu</label>
+      </div>
+      <select id="stage" name="state"></select>
+      <button type="submit">Tranisiton kro</button>
+    </form>
+
+    <main>
+      <canvas width="384" height="224"></canvas>
+    </main>
+    
+
     <img src="./images/ken.png" alt="ken" style="display: none" />
     <img
       src="./images/Ryu-SF2-Stage.png"
