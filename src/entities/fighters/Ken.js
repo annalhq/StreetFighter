@@ -1,5 +1,5 @@
-import { FighterState } from '../../constants/fighter.js';
 import { Fighter } from './Fighter.js';
+import { FighterState } from '../../constants/fighter.js';
 
 export class Ken extends Fighter {
   constructor(x, y, velocity) {
@@ -94,7 +94,7 @@ export class Ken extends Fighter {
     ]);
 
     this.animations = {
-      [FighterState.WALK_FORWARDS]: [
+      [FighterState.WALK_FORWARD]: [
         'forwards-1',
         'forwards-2',
         'forwards-3',
@@ -102,7 +102,7 @@ export class Ken extends Fighter {
         'forwards-5',
         'forwards-6',
       ],
-      [FighterState.WALK_BACKWARDS]: [
+      [FighterState.WALK_BACKWARD]: [
         'backwards-1',
         'backwards-2',
         'backwards-3',

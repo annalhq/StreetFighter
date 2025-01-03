@@ -1,4 +1,4 @@
-import { FighterState } from "../../constants/fighter";
+import { FighterState } from '../../constants/fighter.js';
 
 export class Fighter {
   constructor(name, x, y, direction) {
@@ -10,14 +10,11 @@ export class Fighter {
     this.velocity = 150 * direction;
     this.animationFrame = 0;
     this.animationTimer = 0;
-    this.state = this.changeState();
     this.animations = {};
-    this.states = {
-      [FighterState.WALK_FORWARDS]: []
-    }
+    this.state = this.changeState();
   }
 
-  changeState = () => this.velocity * this.direction < 0 ? FighterState.WALK_BACKWARDS : FighterState.WALK_FORWARDS;
+  changeState = () => this.velocity * this.direction < 0 ? [FighterState.WALK_BACKWARD] : [FighterState.WALK_FORWARD];
 
   update(time, context) {
     const [[, , width]] = this.frames.get(
