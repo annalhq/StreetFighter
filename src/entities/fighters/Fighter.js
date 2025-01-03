@@ -1,3 +1,5 @@
+import { FighterState } from "../../constants/fighter";
+
 export class Fighter {
   constructor(name, x, y, direction) {
     this.name = name;
@@ -10,9 +12,12 @@ export class Fighter {
     this.animationTimer = 0;
     this.state = this.changeState();
     this.animations = {};
+    this.states = {
+      [FighterState.WALK_FORWARDS]: []
+    }
   }
 
-  changeState = () => this.velocity * this.direction < 0 ? 'walkBackwards' : 'walkForwards';
+  changeState = () => this.velocity * this.direction < 0 ? FighterState.WALK_BACKWARDS : FighterState.WALK_FORWARDS;
 
   update(time, context) {
     const [[, , width]] = this.frames.get(

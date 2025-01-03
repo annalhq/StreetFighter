@@ -47,11 +47,10 @@
 - added inheritance to allow for easier abstractions 
 - refactored js code 
 - rectified frame timing
-    - Author: annalhq (annalhqshaikh@gmail.com)
-
-## [2025-01-01] fix: fps timing
 - Author: annalhq (annalhqshaikh@gmail.com)
 
+## [2025-01-01] fix: fps timing
+- Author: annalhq (annalhqshaikh@gmail.
 ## [2025-01-01] fix: type errors
 - Author: annalhq (annalhqshaikh@gmail.com)
 
