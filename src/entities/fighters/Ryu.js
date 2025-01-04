@@ -10,6 +10,36 @@ export class Ryu extends Fighter {
     this.frames = new Map([
       // ['name', [x, y, width, height], [originX, originY]],
 
+      // IDLE
+      [
+        'idle-1',
+        [
+          [75, 14, 60, 89],
+          [34, 86],
+        ],
+      ],
+      [
+        'idle-2',
+        [
+          [7, 14, 59, 90],
+          [33, 87],
+        ],
+      ],
+      [
+        'idle-3',
+        [
+          [142, 13, 59, 90],
+          [33, 88],
+        ],
+      ],
+      [
+        'idle-4',
+        [
+          [211, 10, 55, 93],
+          [31, 90],
+        ],
+      ],
+
       // forwards
       [
         'forwards-1',
@@ -100,6 +130,14 @@ export class Ryu extends Fighter {
     ]);
 
     this.animations = {
+      [FighterState.IDLE]: [
+        'idle-1',
+        'idle-2',
+        'idle-3',
+        'idle-4',
+        'idle-3',
+        'idle-2',
+      ],
       [FighterState.WALK_FORWARD]: [
         'forwards-1',
         'forwards-2',

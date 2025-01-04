@@ -5,10 +5,10 @@ import { FpsCounter } from './entities/fpsCounter.js';
 import { STAGE_FLOOR } from './constants/stage.js';
 import { FighterDirection, FighterState } from './constants/fighter.js';
 
-function populateMoveDropdown(){
+function populateMoveDropdown() {
   const dropdown = document.getElementById('stage-dropdown');
 
-  Object.entries(FighterState).forEach(([, value])=> {
+  Object.entries(FighterState).forEach(([, value]) => {
     const option = document.createElement('option');
     option.setAttribute('value', value);
     option.innerText = value;
@@ -16,29 +16,24 @@ function populateMoveDropdown(){
   });
 }
 
-
 function handleFormSubmit(event, fighters) {
   event.preventDefault();
 
   const selectedCheckbox = Array.from(
     event.target.querySelectorAll('input[type="checkbox"]:checked')
-  ).map(checkbox => checkbox.value);
+  ).map((checkbox) => checkbox.value);
 
   const select = event.target.querySelector('select');
   const selectedValue = select.value;
 
-  fighters.forEach(fighter => {
+  fighters.forEach((fighter) => {
     if (selectedCheckbox.includes(fighter.name)) {
       fighter.changeState(selectedValue);
     }
   });
-
-
-
 }
 
 window.addEventListener('load', function () {
-
   populateMoveDropdown();
 
   const canvasComp = document.querySelector('canvas');
@@ -48,14 +43,9 @@ window.addEventListener('load', function () {
   const fighters = [
     new Ken(280, STAGE_FLOOR, FighterDirection.LEFT),
     new Ryu(104, STAGE_FLOOR, FighterDirection.RIGHT),
-    
   ];
-  
-  const entities = [
-    new Stage(),
-    ...fighters,
-    new FpsCounter(),
-  ];
+
+  const entities = [new Stage(), ...fighters, new FpsCounter()];
 
   // fps
 
@@ -81,7 +71,9 @@ window.addEventListener('load', function () {
     }
   }
 
-  this.document.addEventListener('submit', event => handleFormSubmit(event, fighters));
-  
+  this.document.addEventListener('submit', (event) =>
+    handleFormSubmit(event, fighters)
+  );
+
   window.requestAnimationFrame(frame);
 });
