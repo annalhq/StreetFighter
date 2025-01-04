@@ -33,7 +33,7 @@ export class Fighter {
     this.states[this.currentState].init();
   }
 
-  handleWalkForwardInit() {
+  handleWalkForwardInit( ) {
     this.velocity = 150 * this.direction;
   }
 
