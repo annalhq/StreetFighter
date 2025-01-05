@@ -122,6 +122,50 @@ export class Ken extends Fighter {
           [36, 87],
         ],
       ],
+
+      //jump up
+      [
+        'jump-up-1',
+          [
+            [724, 1036, 56, 104],
+            [32, 107],
+          ],
+      ],
+      [
+        'jump-up-2',
+          [
+            [792, 995, 50, 89],
+            [25, 103],
+          ],
+      ],
+      [
+        'jump-up-3',
+          [
+            [853, 967, 54, 77],
+            [25, 103],
+          ],
+      ],
+      [
+        'jump-up-4',
+          [
+            [911, 966, 48, 70],
+            [28, 101],
+          ],
+      ],
+      [
+        'jump-up-5',
+          [
+            [975, 977, 48, 86],
+            [25, 103],
+          ],
+      ],
+      [
+        'jump-up-6',
+          [
+            [1031, 1008, 55, 103],
+            [32, 107],
+          ],
+      ],
     ]);
 
     this.animations = {
@@ -149,6 +193,20 @@ export class Ken extends Fighter {
         'backwards-5',
         'backwards-6',
       ],
+      [FighterState.JUMP_UP]: [
+        'jump-up-1',
+        // 'jump-up-2',
+        // 'jump-up-3',
+        // 'jump-up-4',
+        // 'jump-up-5',
+        // 'jump-up-6',
+      ],
     };
+
+    this.initialVelocity = {
+      jump: -420,
+    };
+
+    this.gravity = 1000;
   }
 }
