@@ -96,14 +96,20 @@ export class Fighter {
   }
 
   updateAnimation(time){
-    if (time.previous > this.animationTimer + 60) {
+    const animation = this.animations[this.currentState];
+    const [, frameDelay] = animation[this.animationFrame];
+
+    if (time.previous > this.animationTimer + frameDelay) {
       this.animationTimer = time.previous;
-  
-      this.animationFrame++;
-      // if (this.animationFrame > 5) this.animationFrame = 1;
-      if (this.animationFrame >= this.animations[this.currentState].length) {
+      
+      if (frameDelay > 0) {
+        this.animationFrame++;
+      }
+
+      if (this.animationFrame >= animation.length) {
         this.animationFrame = 0;
       }
+
     }
   }
 
@@ -141,9 +147,9 @@ export class Fighter {
   }
 
   draw(context) {
-    const [[x, y, width, height], [originX, originY]] = this.frames.get(
-      this.animations[this.currentState][this.animationFrame]
-    );
+
+    const [frameKey] = this.animations[this.currentState][this.animationFrame];
+    const [[x, y, width, height], [originX, originY]] = this.frames.get(frameKey);
 
     context.scale(this.direction, 1);
 
